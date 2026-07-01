@@ -3,18 +3,14 @@ import profileImage from '../assets/portfolio-profile-premium.png';
 import resumeFile from '../assets/ram-sakal-patel-resume.pdf';
 
 const SECTIONS = [
-  {id: 'home', label: 'Home', short: 'Home', icon: 'home', accent: '#0f766e'},
-  {id: 'about', label: 'About', short: 'About', icon: 'profile', accent: '#b7791f'},
-  {id: 'work', label: 'Projects', short: 'Work', icon: 'work', accent: '#0f766e'},
-  {id: 'skills', label: 'Skills', short: 'Skills', icon: 'skills', accent: '#c8792a'},
-  {id: 'experience', label: 'Experience', short: 'Exp', icon: 'experience', accent: '#2f6f63'},
-  {id: 'education', label: 'Education', short: 'Edu', icon: 'education', accent: '#d6a85a'},
-  {id: 'contact', label: 'Contact', short: 'Call', icon: 'contact', accent: '#b7791f'},
+  {id: 'home', label: 'Home', short: 'Home', icon: '⌂', accent: '#5eead4'},
+  {id: 'about', label: 'About', short: 'About', icon: '◐', accent: '#f8d873'},
+  {id: 'work', label: 'Projects', short: 'Work', icon: '◆', accent: '#a78bfa'},
+  {id: 'skills', label: 'Skills', short: 'Skills', icon: '✦', accent: '#38bdf8'},
+  {id: 'experience', label: 'Experience', short: 'Exp', icon: '↗', accent: '#fb7185'},
+  {id: 'education', label: 'Education', short: 'Edu', icon: '◈', accent: '#34d399'},
+  {id: 'contact', label: 'Contact', short: 'Call', icon: '✉', accent: '#f8d873'},
 ];
-
-const IMPORTANT_NAV_IDS = ['home', 'about', 'work', 'skills', 'experience'];
-const NAV_SECTIONS = SECTIONS.filter(section => IMPORTANT_NAV_IDS.includes(section.id));
-const MOBILE_TABS = NAV_SECTIONS;
 
 const PROFILE = {
   name: 'Ram Sakal Patel',
@@ -89,7 +85,7 @@ const PROJECTS = [
     summary:
       'Full-stack restaurant reservation system with live table availability, instant confirmation, customer booking history, restaurant management, seating schedules and KPI dashboards.',
     stack: ['React Native', 'React.js', 'Node.js', 'Express.js', 'Postgres'],
-    tone: 'bronze',
+    tone: 'violet',
   },
   {
     title: 'SupplyMatch',
@@ -227,10 +223,10 @@ const EDUCATION = [
 ];
 
 const CONTACTS = [
-  {label: 'Email', value: PROFILE.email, href: `mailto:${PROFILE.email}`, icon: 'email'},
-  {label: 'Phone', value: PROFILE.phone, href: 'tel:+917355049718', icon: 'phone'},
-  {label: 'LinkedIn', value: 'ram-sakal-patel', href: PROFILE.linkedin, icon: 'linkedin'},
-  {label: 'GitHub', value: 'visitramsp', href: PROFILE.github, icon: 'github'},
+  {label: 'Email', value: PROFILE.email, href: `mailto:${PROFILE.email}`},
+  {label: 'Phone', value: PROFILE.phone, href: 'tel:+917355049718'},
+  {label: 'LinkedIn', value: 'ram-sakal-patel', href: PROFILE.linkedin},
+  {label: 'GitHub', value: 'visitramsp', href: PROFILE.github},
 ];
 
 const TECH_MARQUEE = [
@@ -338,14 +334,8 @@ function Ambient({pointer, accent}) {
 
   return (
     <div className="ambient" style={{'--mx': `${pointer.x}%`, '--my': `${pointer.y}%`, '--active': accent}}>
-      <div className="aurora-veil" />
       <div className="noise" />
       <div className="grid-overlay" />
-      <div className="digital-dots" />
-      <div className="halo-ring halo-ring-one" />
-      <div className="halo-ring halo-ring-two" />
-      <div className="light-beam beam-one" />
-      <div className="light-beam beam-two" />
       <div className="orb orb-one" />
       <div className="orb orb-two" />
       <div className="orb orb-three" />
@@ -375,8 +365,8 @@ function Cursor({accent}) {
     const animate = () => {
       current.current.x += (target.current.x - current.current.x) * 0.16;
       current.current.y += (target.current.y - current.current.y) * 0.16;
-      if (ring.current) ring.current.style.transform = `translate3d(${current.current.x - 26}px, ${current.current.y - 26}px, 0)`;
-      if (dot.current) dot.current.style.transform = `translate3d(${target.current.x - 5}px, ${target.current.y - 5}px, 0)`;
+      if (ring.current) ring.current.style.transform = `translate3d(${current.current.x - 23}px, ${current.current.y - 23}px, 0)`;
+      if (dot.current) dot.current.style.transform = `translate3d(${target.current.x - 4}px, ${target.current.y - 4}px, 0)`;
       requestAnimationFrame(animate);
     };
 
@@ -390,105 +380,9 @@ function Cursor({accent}) {
 
   return (
     <>
-      <div className="cursor-ring" ref={ring} style={{'--cursor': accent}}>
-        <span />
-        <em />
-      </div>
+      <div className="cursor-ring" ref={ring} style={{'--cursor': accent}} />
       <div className="cursor-dot" ref={dot} style={{'--cursor': accent}} />
     </>
-  );
-}
-
-const ICON_PATHS = {
-  home: (
-    <>
-      <path d="M3.8 11.3 12 4l8.2 7.3" />
-      <path d="M6.2 10.4v8.2h4.1v-4.7h3.4v4.7h4.1v-8.2" />
-    </>
-  ),
-  profile: (
-    <>
-      <circle cx="12" cy="8" r="3.1" />
-      <path d="M5.4 19c.9-3.3 3.1-5 6.6-5s5.7 1.7 6.6 5" />
-    </>
-  ),
-  skills: (
-    <>
-      <path d="m8.4 7.2-4.1 4.1 4.1 4.1" />
-      <path d="m15.6 7.2 4.1 4.1-4.1 4.1" />
-      <path d="M13.6 5.8 10.4 18" />
-    </>
-  ),
-  experience: (
-    <>
-      <path d="M8 7.2V5.6c0-.9.7-1.6 1.6-1.6h4.8c.9 0 1.6.7 1.6 1.6v1.6" />
-      <path d="M4.5 8.2h15v9.4c0 1.2-.8 2-2 2h-11c-1.2 0-2-.8-2-2V8.2Z" />
-      <path d="M9.2 12.1h5.6" />
-    </>
-  ),
-  work: (
-    <>
-      <path d="M4.2 6.8h15.6v12.1H4.2z" />
-      <path d="M7.1 6.8V5.4c0-.7.5-1.2 1.2-1.2h7.4c.7 0 1.2.5 1.2 1.2v1.4" />
-      <path d="M4.2 11.3h15.6" />
-    </>
-  ),
-  education: (
-    <>
-      <path d="m3.8 8.7 8.2-4.1 8.2 4.1-8.2 4.1-8.2-4.1Z" />
-      <path d="M7 10.4v4.7c1.3 1.3 3 2 5 2s3.7-.7 5-2v-4.7" />
-    </>
-  ),
-  contact: (
-    <>
-      <path d="M4.6 6.5h14.8v11H4.6z" />
-      <path d="m5.2 7.1 6.8 5.5 6.8-5.5" />
-    </>
-  ),
-};
-
-function TabIcon({name}) {
-  return (
-    <svg className="tab-icon" viewBox="0 0 24 24" aria-hidden="true">
-      {ICON_PATHS[name] || ICON_PATHS.home}
-    </svg>
-  );
-}
-
-
-const CONTACT_ICON_PATHS = {
-  email: (
-    <>
-      <path d="M4.8 6.8h14.4v10.4H4.8z" />
-      <path d="m5.4 7.4 6.6 5.3 6.6-5.3" />
-    </>
-  ),
-  phone: (
-    <>
-      <path d="M8.1 5.1 6.4 6.8c-.7.7-.8 1.8-.3 2.7 1.8 3.4 4.6 6.2 8 8 .9.5 2 .4 2.7-.3l1.7-1.7c.4-.4.4-1 0-1.4l-2.3-2.1c-.3-.3-.8-.4-1.2-.1l-1.4.8c-1.2-.7-2.2-1.7-2.9-2.9l.8-1.4c.2-.4.2-.9-.1-1.2L9.5 5.1c-.4-.4-1-.4-1.4 0Z" />
-    </>
-  ),
-  linkedin: (
-    <>
-      <path d="M6.4 9.8v8.4" />
-      <path d="M10.8 18.2v-4.7c0-2.3 1.3-3.7 3.3-3.7 1.9 0 3.1 1.3 3.1 3.7v4.7" />
-      <path d="M10.8 10.1v8.1" />
-      <circle cx="6.4" cy="6.3" r="1.1" />
-    </>
-  ),
-  github: (
-    <>
-      <path d="M9.2 19.1c-4.1 1.2-4.1-2-5.8-2.4" />
-      <path d="M14.8 21v-3.2c0-.9.1-1.6-.4-2.2 2.7-.3 5.6-1.3 5.6-6a4.6 4.6 0 0 0-1.2-3.2 4.3 4.3 0 0 0-.1-3.2s-1-.3-3.3 1.2a11.1 11.1 0 0 0-6 0C7.1 2.9 6.1 3.2 6.1 3.2a4.3 4.3 0 0 0-.1 3.2 4.6 4.6 0 0 0-1.2 3.2c0 4.6 2.8 5.7 5.5 6-.3.3-.5.8-.6 1.4" />
-    </>
-  ),
-};
-
-function ContactIcon({name}) {
-  return (
-    <svg viewBox="0 0 24 24" aria-hidden="true">
-      {CONTACT_ICON_PATHS[name] || CONTACT_ICON_PATHS.email}
-    </svg>
   );
 }
 
@@ -511,7 +405,7 @@ function Nav({active, progress}) {
           <strong>Ram Sakal Patel</strong>
         </a>
         <nav className="desktop-links" aria-label="Portfolio navigation">
-          {NAV_SECTIONS.map(section => (
+          {SECTIONS.map(section => (
             <a
               href={`#${section.id}`}
               key={section.id}
@@ -531,7 +425,7 @@ function Nav({active, progress}) {
       </header>
 
       <div className={`mobile-menu ${open ? 'open' : ''}`}>
-        {NAV_SECTIONS.map((section, index) => (
+        {SECTIONS.map((section, index) => (
           <a
             key={section.id}
             href={`#${section.id}`}
@@ -544,16 +438,14 @@ function Nav({active, progress}) {
       </div>
 
       <nav className="mobile-bottom-tabs" aria-label="Mobile portfolio tabs">
-        {MOBILE_TABS.map(section => (
+        {SECTIONS.map(section => (
           <a
             key={section.id}
             href={`#${section.id}`}
             className={active.id === section.id ? 'active' : ''}
             style={{'--link': section.accent}}>
-            <span className="tab-glow" />
-            <TabIcon name={section.icon} />
+            <i>{section.icon}</i>
             <span>{section.short}</span>
-            <b className="tab-indicator" />
           </a>
         ))}
       </nav>
@@ -566,33 +458,6 @@ function Eyebrow({number, children}) {
     <div className="eyebrow">
       <span>{number}</span>
       <p>{children}</p>
-    </div>
-  );
-}
-
-function PortraitVisual({className = '', compact = false}) {
-  return (
-    <div className={`portrait-wrap ${className}`} data-reveal>
-      <div className="portrait-card">
-        <div className="portrait-glow" />
-        <img src={profileImage} alt="Ram Sakal Patel" />
-        <div className="portrait-info">
-          <strong>{PROFILE.name}</strong>
-          <span>{PROFILE.role} - {PROFILE.location}</span>
-        </div>
-      </div>
-      {!compact && (
-        <>
-          <div className="code-card code-card-one">
-            <small>Core stack</small>
-            <strong>React / Next / Node</strong>
-          </div>
-          <div className="code-card code-card-two">
-            <small>Experience</small>
-            <strong>3+ years</strong>
-          </div>
-        </>
-      )}
     </div>
   );
 }
@@ -610,7 +475,6 @@ function Hero() {
           <span>Developer</span>
           <em>for scalable products.</em>
         </h1>
-        <PortraitVisual className="mobile-hero-portrait" compact />
         <p className="hero-intro">{PROFILE.intro}</p>
         <div className="hero-actions">
           <a href="#work" className="primary-btn">View projects</a>
@@ -625,7 +489,24 @@ function Hero() {
         </div>
       </div>
 
-      <PortraitVisual className="desktop-hero-portrait" />
+      <div className="portrait-wrap" data-reveal>
+        <div className="portrait-card">
+          <div className="portrait-glow" />
+          <img src={profileImage} alt="Ram Sakal Patel" />
+          <div className="portrait-info">
+            <strong>{PROFILE.name}</strong>
+            <span>{PROFILE.role} - {PROFILE.location}</span>
+          </div>
+        </div>
+        <div className="code-card code-card-one">
+          <small>Core stack</small>
+          <strong>React / Next / Node</strong>
+        </div>
+        <div className="code-card code-card-two">
+          <small>Experience</small>
+          <strong>3+ years</strong>
+        </div>
+      </div>
     </section>
   );
 }
@@ -833,13 +714,9 @@ function Contact() {
         </p>
         <div className="contact-list">
           {CONTACTS.map(item => (
-            <a className="contact-card-link" key={item.label} href={item.href} target={item.href.startsWith('http') ? '_blank' : undefined} rel="noreferrer">
-              <span className="contact-icon"><ContactIcon name={item.icon} /></span>
-              <span className="contact-text">
-                <small>{item.label}</small>
-                <strong>{item.value}</strong>
-              </span>
-              <i aria-hidden="true">↗</i>
+            <a key={item.label} href={item.href} target={item.href.startsWith('http') ? '_blank' : undefined} rel="noreferrer">
+              <span>{item.label}</span>
+              <strong>{item.value}</strong>
             </a>
           ))}
         </div>

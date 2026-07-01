@@ -3,13 +3,13 @@ import profileImage from '../assets/portfolio-profile-premium.png';
 import resumeFile from '../assets/ram-sakal-patel-resume.pdf';
 
 const SECTIONS = [
-  {id: 'home', label: 'Home', short: 'Home', icon: 'home', accent: '#0f766e'},
-  {id: 'about', label: 'About', short: 'About', icon: 'profile', accent: '#b7791f'},
-  {id: 'work', label: 'Projects', short: 'Work', icon: 'work', accent: '#0f766e'},
-  {id: 'skills', label: 'Skills', short: 'Skills', icon: 'skills', accent: '#c8792a'},
-  {id: 'experience', label: 'Experience', short: 'Exp', icon: 'experience', accent: '#2f6f63'},
-  {id: 'education', label: 'Education', short: 'Edu', icon: 'education', accent: '#d6a85a'},
-  {id: 'contact', label: 'Contact', short: 'Call', icon: 'contact', accent: '#b7791f'},
+  {id: 'home', label: 'Home', short: 'Home', icon: 'home', accent: '#7c3cff'},
+  {id: 'about', label: 'About', short: 'About', icon: 'profile', accent: '#22d3ee'},
+  {id: 'work', label: 'Projects', short: 'Work', icon: 'work', accent: '#a78bfa'},
+  {id: 'skills', label: 'Skills', short: 'Skills', icon: 'skills', accent: '#38bdf8'},
+  {id: 'experience', label: 'Experience', short: 'Exp', icon: 'experience', accent: '#8b5cf6'},
+  {id: 'education', label: 'Education', short: 'Edu', icon: 'education', accent: '#34d399'},
+  {id: 'contact', label: 'Contact', short: 'Call', icon: 'contact', accent: '#f8d873'},
 ];
 
 const IMPORTANT_NAV_IDS = ['home', 'about', 'work', 'skills', 'experience'];
@@ -89,7 +89,7 @@ const PROJECTS = [
     summary:
       'Full-stack restaurant reservation system with live table availability, instant confirmation, customer booking history, restaurant management, seating schedules and KPI dashboards.',
     stack: ['React Native', 'React.js', 'Node.js', 'Express.js', 'Postgres'],
-    tone: 'bronze',
+    tone: 'violet',
   },
   {
     title: 'SupplyMatch',
@@ -227,10 +227,10 @@ const EDUCATION = [
 ];
 
 const CONTACTS = [
-  {label: 'Email', value: PROFILE.email, href: `mailto:${PROFILE.email}`, icon: 'email'},
-  {label: 'Phone', value: PROFILE.phone, href: 'tel:+917355049718', icon: 'phone'},
-  {label: 'LinkedIn', value: 'ram-sakal-patel', href: PROFILE.linkedin, icon: 'linkedin'},
-  {label: 'GitHub', value: 'visitramsp', href: PROFILE.github, icon: 'github'},
+  {label: 'Email', value: PROFILE.email, href: `mailto:${PROFILE.email}`},
+  {label: 'Phone', value: PROFILE.phone, href: 'tel:+917355049718'},
+  {label: 'LinkedIn', value: 'ram-sakal-patel', href: PROFILE.linkedin},
+  {label: 'GitHub', value: 'visitramsp', href: PROFILE.github},
 ];
 
 const TECH_MARQUEE = [
@@ -451,43 +451,6 @@ function TabIcon({name}) {
   return (
     <svg className="tab-icon" viewBox="0 0 24 24" aria-hidden="true">
       {ICON_PATHS[name] || ICON_PATHS.home}
-    </svg>
-  );
-}
-
-
-const CONTACT_ICON_PATHS = {
-  email: (
-    <>
-      <path d="M4.8 6.8h14.4v10.4H4.8z" />
-      <path d="m5.4 7.4 6.6 5.3 6.6-5.3" />
-    </>
-  ),
-  phone: (
-    <>
-      <path d="M8.1 5.1 6.4 6.8c-.7.7-.8 1.8-.3 2.7 1.8 3.4 4.6 6.2 8 8 .9.5 2 .4 2.7-.3l1.7-1.7c.4-.4.4-1 0-1.4l-2.3-2.1c-.3-.3-.8-.4-1.2-.1l-1.4.8c-1.2-.7-2.2-1.7-2.9-2.9l.8-1.4c.2-.4.2-.9-.1-1.2L9.5 5.1c-.4-.4-1-.4-1.4 0Z" />
-    </>
-  ),
-  linkedin: (
-    <>
-      <path d="M6.4 9.8v8.4" />
-      <path d="M10.8 18.2v-4.7c0-2.3 1.3-3.7 3.3-3.7 1.9 0 3.1 1.3 3.1 3.7v4.7" />
-      <path d="M10.8 10.1v8.1" />
-      <circle cx="6.4" cy="6.3" r="1.1" />
-    </>
-  ),
-  github: (
-    <>
-      <path d="M9.2 19.1c-4.1 1.2-4.1-2-5.8-2.4" />
-      <path d="M14.8 21v-3.2c0-.9.1-1.6-.4-2.2 2.7-.3 5.6-1.3 5.6-6a4.6 4.6 0 0 0-1.2-3.2 4.3 4.3 0 0 0-.1-3.2s-1-.3-3.3 1.2a11.1 11.1 0 0 0-6 0C7.1 2.9 6.1 3.2 6.1 3.2a4.3 4.3 0 0 0-.1 3.2 4.6 4.6 0 0 0-1.2 3.2c0 4.6 2.8 5.7 5.5 6-.3.3-.5.8-.6 1.4" />
-    </>
-  ),
-};
-
-function ContactIcon({name}) {
-  return (
-    <svg viewBox="0 0 24 24" aria-hidden="true">
-      {CONTACT_ICON_PATHS[name] || CONTACT_ICON_PATHS.email}
     </svg>
   );
 }
@@ -833,13 +796,9 @@ function Contact() {
         </p>
         <div className="contact-list">
           {CONTACTS.map(item => (
-            <a className="contact-card-link" key={item.label} href={item.href} target={item.href.startsWith('http') ? '_blank' : undefined} rel="noreferrer">
-              <span className="contact-icon"><ContactIcon name={item.icon} /></span>
-              <span className="contact-text">
-                <small>{item.label}</small>
-                <strong>{item.value}</strong>
-              </span>
-              <i aria-hidden="true">↗</i>
+            <a key={item.label} href={item.href} target={item.href.startsWith('http') ? '_blank' : undefined} rel="noreferrer">
+              <span>{item.label}</span>
+              <strong>{item.value}</strong>
             </a>
           ))}
         </div>
