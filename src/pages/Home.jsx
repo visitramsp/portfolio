@@ -1,6 +1,19 @@
 import {useEffect, useMemo, useRef, useState} from 'react';
 import profileImage from '../assets/portfolio-profile-premium.png';
 import resumeFile from '../assets/ram-sakal-patel-resume.pdf';
+import opinionKingsThumb from '../assets/projects/project-opinionkings.png';
+import goQuicksilverThumb from '../assets/projects/project-goquicksilver.png';
+import colonyThumb from '../assets/projects/project-colony.png';
+import supplyMatchThumb from '../assets/projects/project-supplymatch.png';
+import supplyMatchAppThumb from '../assets/projects/project-supplymatch-app.png';
+import erpThumb from '../assets/projects/project-erp.png';
+import gmsThumb from '../assets/projects/project-gms.png';
+import smsThumb from '../assets/projects/project-sms.png';
+import hrmThumb from '../assets/projects/project-hrm.png';
+import crmThumb from '../assets/projects/project-crm.png';
+import definodeThumb from '../assets/projects/project-definode.png';
+import infyraThumb from '../assets/projects/project-infyra.png';
+import nexcommexThumb from '../assets/projects/project-nexcommex.png';
 
 const SECTIONS = [
   {id: 'home', label: 'Home', short: 'Home', icon: 'home', accent: '#0f766e'},
@@ -12,9 +25,10 @@ const SECTIONS = [
   {id: 'contact', label: 'Contact', short: 'Call', icon: 'contact', accent: '#b7791f'},
 ];
 
-const IMPORTANT_NAV_IDS = ['home', 'about', 'work', 'skills', 'experience'];
+const IMPORTANT_NAV_IDS = ['home', 'work', 'skills', 'experience', 'contact'];
+const MOBILE_DRAWER_IDS = ['home', 'work', 'skills', 'experience', 'education', 'contact'];
 const NAV_SECTIONS = SECTIONS.filter(section => IMPORTANT_NAV_IDS.includes(section.id));
-const MOBILE_TABS = NAV_SECTIONS;
+const MOBILE_DRAWER_SECTIONS = SECTIONS.filter(section => MOBILE_DRAWER_IDS.includes(section.id));
 
 const PROFILE = {
   name: 'Ram Sakal Patel',
@@ -35,7 +49,7 @@ const PROFILE = {
 
 const STATS = [
   {value: '3+', label: 'Years experience'},
-  {value: '12+', label: 'Real projects'},
+  {value: '13+', label: 'Real projects'},
   {value: 'Web + Mobile', label: 'Delivery capability'},
   {value: 'MERN', label: 'Primary stack'},
 ];
@@ -68,6 +82,7 @@ const PROJECTS = [
     title: 'OpinionKings Platform',
     category: 'Real-time Prediction Market',
     status: 'Completed',
+    image: opinionKingsThumb,
     summary:
       'Scalable prediction market platform with live trading, dynamic market updates, WebSocket order execution, wallet flows, Google login and high-performance analytics screens.',
     stack: ['React.js', 'Next.js', 'Node.js', 'Nest.js', 'Redux Toolkit', 'WebSockets'],
@@ -77,6 +92,7 @@ const PROJECTS = [
     title: 'goQuicksilver',
     category: 'Global Transportation Booking',
     status: 'Completed',
+    image: goQuicksilverThumb,
     summary:
       'Booking platform experience with customer-facing flows, role-based admin management, real-time booking confirmation, operational APIs and responsive analytics dashboards.',
     stack: ['React.js', 'React Native', 'Node.js', 'MongoDB', 'WebSockets'],
@@ -86,6 +102,7 @@ const PROJECTS = [
     title: 'Colony App & Admin Panel',
     category: 'Restaurant Seat Booking',
     status: 'Completed',
+    image: colonyThumb,
     summary:
       'Full-stack restaurant reservation system with live table availability, instant confirmation, customer booking history, restaurant management, seating schedules and KPI dashboards.',
     stack: ['React Native', 'React.js', 'Node.js', 'Express.js', 'Postgres'],
@@ -95,6 +112,7 @@ const PROJECTS = [
     title: 'SupplyMatch',
     category: 'Supply Chain Web Platform',
     status: 'Completed',
+    image: supplyMatchThumb,
     summary:
       'Full-suite supply chain solution with Admin Console, Supplier Dashboard, marketing website, role-specific access and Socket.io communication between suppliers and retailers.',
     stack: ['React.js', 'Socket.io', 'MUI', 'ShadCN', 'SCSS', 'Redux'],
@@ -104,6 +122,7 @@ const PROJECTS = [
     title: 'SupplyMatch App',
     category: 'Logistics Mobile App',
     status: 'Completed',
+    image: supplyMatchAppThumb,
     summary:
       'Cross-platform React Native app for suppliers, retailers and delivery partners with role-based dashboards, inventory updates, order tracking, Google Maps and persistent sessions.',
     stack: ['React Native', 'Axios', 'Redux', 'Redux Persist', 'Google Maps API'],
@@ -113,6 +132,7 @@ const PROJECTS = [
     title: 'ERP Management System',
     category: 'Enterprise Dashboard Suite',
     status: 'Completed',
+    image: erpThumb,
     summary:
       'Modular ERP covering Finance & Accounting, Inventory, HR and CRM with Apex Charts dashboards, real-time reporting and executive KPI visibility.',
     stack: ['React.js', 'SCSS', 'MUI', 'Apex Charts', 'Axios', 'Redux'],
@@ -122,6 +142,7 @@ const PROJECTS = [
     title: 'Garage Management System (GMS)',
     category: 'Service & Operations Platform',
     status: 'Added',
+    image: gmsThumb,
     summary:
       'Garage workflow platform for vehicle records, service booking, job cards, mechanics assignment, spare parts inventory, billing, customer history and operational reports.',
     stack: ['React.js', 'Node.js', 'Express.js', 'MongoDB', 'MUI', 'REST APIs'],
@@ -131,37 +152,94 @@ const PROJECTS = [
     title: 'Student Management System (SMS)',
     category: 'Education Admin Platform',
     status: 'Added',
+    image: smsThumb,
     summary:
       'Student lifecycle system for admission records, class management, attendance, fees, exams, results, role-based dashboards and clean admin workflows.',
     stack: ['React.js', 'Node.js', 'Express.js', 'MySQL', 'Redux', 'Tailwind CSS'],
     tone: 'cyan',
   },
+  {
+    title: 'Human Resource Management (HRM)',
+    category: 'People Operations Suite',
+    status: 'Portfolio',
+    image: hrmThumb,
+    summary:
+      'HRM dashboard for employee profiles, attendance tracking, leave approvals, payroll summaries, department workflows, role permissions and management-level reporting.',
+    stack: ['React.js', 'Node.js', 'Express.js', 'MongoDB', 'Redux', 'MUI'],
+    tone: 'olive',
+  },
+  {
+    title: 'Content Resource Management (CRM)',
+    category: 'Business Content & Client Workflow',
+    status: 'Portfolio',
+    image: crmThumb,
+    summary:
+      'CRM-style operating system for content resources, client records, lead activities, task tracking, follow-up reminders, analytics and structured admin collaboration.',
+    stack: ['React.js', 'Next.js', 'Tailwind CSS', 'Node.js', 'REST APIs', 'MySQL'],
+    tone: 'sand',
+  },
+  {
+    title: 'Definode.io',
+    category: 'Blockchain / DeFi Interface',
+    status: 'Web3',
+    image: definodeThumb,
+    summary:
+      'Blockchain product interface concept with wallet connection, token-oriented dashboards, transaction states, responsive Web3 screens and clean DeFi user journeys.',
+    stack: ['Next.js', 'React.js', 'Web3', 'Wallet Integration', 'Smart Contract APIs'],
+    tone: 'emerald',
+  },
+  {
+    title: 'Infyra.io',
+    category: 'Blockchain Product Platform',
+    status: 'Web3',
+    image: infyraThumb,
+    summary:
+      'Premium blockchain application experience focused on modern landing pages, authenticated dashboards, API-driven data flows and investor-ready digital presentation.',
+    stack: ['React.js', 'Next.js', 'Node.js', 'Tailwind CSS', 'Web3 APIs'],
+    tone: 'pearl',
+  },
+  {
+    title: 'Nexcommex',
+    category: 'Crypto Exchange / Trading UI',
+    status: 'Web3',
+    image: nexcommexThumb,
+    summary:
+      'Exchange-style product interface with trading screens, market tables, live price modules, secure account flows and responsive crypto dashboard architecture.',
+    stack: ['React.js', 'Next.js', 'Redux Toolkit', 'Socket.io', 'Charts', 'Web3'],
+    tone: 'gold',
+  },
 ];
 
 const SKILLS = [
   {
-    title: 'Programming',
-    items: ['HTML', 'CSS', 'JavaScript', 'C Programming'],
+    title: 'Frontend Product Engineering',
+    description: 'Premium interfaces, clean component systems and responsive layouts for production products.',
+    items: ['React.js', 'Next.js', 'React Native', 'Tailwind CSS', 'Material UI', 'ShadCN'],
   },
   {
-    title: 'Frameworks',
-    items: ['React.js', 'Next.js', 'React Native', 'Node.js', 'Express.js', 'MongoDB', 'MySQL'],
+    title: 'Backend & API Architecture',
+    description: 'Reliable API layers, authentication flows and scalable server-side modules for business platforms.',
+    items: ['Node.js', 'Express.js', 'Nest.js', 'REST APIs', 'Auth Systems', 'API Integration'],
   },
   {
-    title: 'UI Libraries',
-    items: ['Tailwind CSS', 'Material UI', 'ShadCN', 'Ant Design', 'SCSS', 'Responsive UI'],
+    title: 'Database & State Systems',
+    description: 'Structured data, persistent sessions and global state patterns for complex dashboards.',
+    items: ['MongoDB', 'MySQL', 'Postgres', 'MsSQL', 'Redux Toolkit', 'Redux Persist'],
   },
   {
-    title: 'State, Forms & Data',
-    items: ['Redux', 'Redux Persist', 'Formik', 'Yup', 'Axios', 'React Table'],
+    title: 'Realtime & Dashboard Intelligence',
+    description: 'Live updates, analytics visualizations and operational panels that support fast decision-making.',
+    items: ['WebSockets', 'Socket.io', 'Apex Charts', 'Apache E-Charts', 'React Table', 'Google Maps API'],
   },
   {
-    title: 'Realtime & Visualization',
-    items: ['WebSockets', 'Socket.io', 'Apex Charts', 'Apache E-Charts', 'Google Maps API'],
+    title: 'Blockchain & Web3 Interfaces',
+    description: 'Wallet-first interfaces, smart contract API flows and DeFi-ready product screens.',
+    items: ['Wallet Integration', 'Smart Contract APIs', 'Web3 Dashboards', 'Transaction UI', 'Crypto UX'],
   },
   {
-    title: 'Tools & Workflow',
-    items: ['Git', 'GitLab', 'GitHub', 'Visual Studio Code', 'REST APIs'],
+    title: 'Delivery Workflow',
+    description: 'Clean implementation habits for maintainable, scalable and team-friendly development.',
+    items: ['Git', 'GitLab', 'GitHub', 'Reusable Components', 'Performance Tuning', 'Responsive UI'],
   },
 ];
 
@@ -228,7 +306,7 @@ const EDUCATION = [
 
 const CONTACTS = [
   {label: 'Email', value: PROFILE.email, href: `mailto:${PROFILE.email}`, icon: 'email'},
-  {label: 'Phone', value: PROFILE.phone, href: 'tel:+917355049718', icon: 'phone'},
+  {label: 'WhatsApp', value: PROFILE.phone, href: 'https://wa.me/917355049718', icon: 'whatsapp'},
   {label: 'LinkedIn', value: 'ram-sakal-patel', href: PROFILE.linkedin, icon: 'linkedin'},
   {label: 'GitHub', value: 'visitramsp', href: PROFILE.github, icon: 'github'},
 ];
@@ -248,36 +326,66 @@ const TECH_MARQUEE = [
   'Material UI',
   'Apex Charts',
   'Google Maps API',
+  'Web3',
+  'Smart Contract APIs',
+  'Wallet Integration',
+  'Dashboards',
 ];
 
 function useActiveSection() {
   const [active, setActive] = useState(SECTIONS[0]);
   const [progress, setProgress] = useState(0);
+  const activeId = useRef(SECTIONS[0].id);
+  const progressValue = useRef(0);
 
   useEffect(() => {
+    let ticking = false;
+    let sectionElements = SECTIONS.map(section => ({section, element: document.getElementById(section.id)}));
+
     const update = () => {
+      ticking = false;
       const max = document.documentElement.scrollHeight - window.innerHeight;
-      setProgress(max > 0 ? window.scrollY / max : 0);
+      const nextProgress = max > 0 ? window.scrollY / max : 0;
+
+      // Avoid re-rendering the whole portfolio on every tiny scroll movement.
+      if (Math.abs(nextProgress - progressValue.current) > 0.006 || nextProgress === 0 || nextProgress >= 0.995) {
+        progressValue.current = nextProgress;
+        setProgress(nextProgress);
+      }
 
       let current = SECTIONS[0];
-      for (const section of SECTIONS) {
-        const element = document.getElementById(section.id);
-        if (!element) continue;
-        const rect = element.getBoundingClientRect();
+      for (const item of sectionElements) {
+        if (!item.element) continue;
+        const rect = item.element.getBoundingClientRect();
         if (rect.top <= window.innerHeight * 0.5 && rect.bottom >= window.innerHeight * 0.24) {
-          current = section;
+          current = item.section;
           break;
         }
       }
-      setActive(current);
+
+      if (current.id !== activeId.current) {
+        activeId.current = current.id;
+        setActive(current);
+      }
     };
 
-    update();
-    window.addEventListener('scroll', update, {passive: true});
-    window.addEventListener('resize', update);
+    const requestUpdate = () => {
+      if (ticking) return;
+      ticking = true;
+      window.requestAnimationFrame(update);
+    };
+
+    const refreshSections = () => {
+      sectionElements = SECTIONS.map(section => ({section, element: document.getElementById(section.id)}));
+      requestUpdate();
+    };
+
+    refreshSections();
+    window.addEventListener('scroll', requestUpdate, {passive: true});
+    window.addEventListener('resize', refreshSections);
     return () => {
-      window.removeEventListener('scroll', update);
-      window.removeEventListener('resize', update);
+      window.removeEventListener('scroll', requestUpdate);
+      window.removeEventListener('resize', refreshSections);
     };
   }, []);
 
@@ -286,16 +394,28 @@ function useActiveSection() {
 
 function usePointer() {
   const [pointer, setPointer] = useState({x: 48, y: 28});
+  const frame = useRef(0);
+  const latest = useRef(pointer);
 
   useEffect(() => {
     const move = event => {
-      setPointer({
+      latest.current = {
         x: (event.clientX / window.innerWidth) * 100,
         y: (event.clientY / window.innerHeight) * 100,
+      };
+
+      if (frame.current) return;
+      frame.current = window.requestAnimationFrame(() => {
+        frame.current = 0;
+        setPointer(latest.current);
       });
     };
+
     window.addEventListener('pointermove', move, {passive: true});
-    return () => window.removeEventListener('pointermove', move);
+    return () => {
+      window.removeEventListener('pointermove', move);
+      if (frame.current) window.cancelAnimationFrame(frame.current);
+    };
   }, []);
 
   return pointer;
@@ -463,9 +583,10 @@ const CONTACT_ICON_PATHS = {
       <path d="m5.4 7.4 6.6 5.3 6.6-5.3" />
     </>
   ),
-  phone: (
+  whatsapp: (
     <>
-      <path d="M8.1 5.1 6.4 6.8c-.7.7-.8 1.8-.3 2.7 1.8 3.4 4.6 6.2 8 8 .9.5 2 .4 2.7-.3l1.7-1.7c.4-.4.4-1 0-1.4l-2.3-2.1c-.3-.3-.8-.4-1.2-.1l-1.4.8c-1.2-.7-2.2-1.7-2.9-2.9l.8-1.4c.2-.4.2-.9-.1-1.2L9.5 5.1c-.4-.4-1-.4-1.4 0Z" />
+      <path d="M5.2 19.4 6.3 16A7.1 7.1 0 1 1 9 18.7l-3.8.7Z" />
+      <path d="M9.3 8.7c.2-.4.4-.4.7-.2l.9 1c.2.2.2.4 0 .7l-.4.6c.7 1.2 1.6 2.1 2.8 2.7l.6-.4c.3-.2.5-.2.7 0l1 .8c.3.2.3.5.1.8-.5.8-1.2 1.1-2.1.8-2.1-.7-4.5-3.1-5.2-5.2-.3-.8.1-1.5.9-2Z" />
     </>
   ),
   linkedin: (
@@ -494,6 +615,28 @@ function ContactIcon({name}) {
 
 function Nav({active, progress}) {
   const [open, setOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    let last = false;
+    let ticking = false;
+    const update = () => {
+      ticking = false;
+      const next = window.scrollY > 18;
+      if (next !== last) {
+        last = next;
+        setScrolled(next);
+      }
+    };
+    const onScroll = () => {
+      if (ticking) return;
+      ticking = true;
+      window.requestAnimationFrame(update);
+    };
+    update();
+    window.addEventListener('scroll', onScroll, {passive: true});
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
 
   useEffect(() => {
     document.body.classList.toggle('menu-open', open);
@@ -505,9 +648,9 @@ function Nav({active, progress}) {
       <div className="progress-line">
         <span style={{transform: `scaleX(${progress})`, background: active.accent}} />
       </div>
-      <header className="top-nav">
-        <a href="#home" className="brand" aria-label="Ram Sakal Patel portfolio home">
-          <span>RSP</span>
+      <header className={`top-nav ${scrolled ? 'is-scrolled' : ''}`}>
+        <a href="#home" className="brand" aria-label="Ram Sakal Patel portfolio home" onClick={() => setOpen(false)}>
+          <span>RS</span>
           <strong>Ram Sakal Patel</strong>
         </a>
         <nav className="desktop-links" aria-label="Portfolio navigation">
@@ -521,50 +664,65 @@ function Nav({active, progress}) {
             </a>
           ))}
         </nav>
-        <a className="nav-cta" href={resumeFile} download>
-          Resume
+        <a className="nav-cta" href={resumeFile} download aria-label="Download resume">
+          <span>Resume</span>
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M12 4v10" />
+            <path d="m8 10 4 4 4-4" />
+            <path d="M5 19h14" />
+          </svg>
         </a>
-        <button className="menu-toggle" onClick={() => setOpen(value => !value)} aria-expanded={open} aria-label="Open menu">
+        <button className="menu-toggle" onClick={() => setOpen(value => !value)} aria-expanded={open} aria-label="Open navigation menu">
           <span>{open ? 'Close' : 'Menu'}</span>
-          <i />
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            {open ? (
+              <>
+                <path d="M6 6l12 12" />
+                <path d="M18 6 6 18" />
+              </>
+            ) : (
+              <>
+                <path d="M5 7h14" />
+                <path d="M9 12h10" />
+                <path d="M5 17h14" />
+              </>
+            )}
+          </svg>
         </button>
       </header>
 
-      <div className={`mobile-menu ${open ? 'open' : ''}`}>
-        {NAV_SECTIONS.map((section, index) => (
-          <a
-            key={section.id}
-            href={`#${section.id}`}
-            style={{'--link': section.accent, '--i': index}}
-            onClick={() => setOpen(false)}>
-            <span>0{index + 1}</span>
-            {section.label}
-          </a>
-        ))}
-      </div>
-
-      <nav className="mobile-bottom-tabs" aria-label="Mobile portfolio tabs">
-        {MOBILE_TABS.map(section => (
+      <div className={`drawer-scrim ${open ? 'open' : ''}`} onClick={() => setOpen(false)} />
+      <aside className={`mobile-menu ${open ? 'open' : ''}`} aria-label="Mobile navigation drawer">
+        <div className="drawer-head">
+          <span>RS</span>
+          <div>
+            <strong>Portfolio Menu</strong>
+            <small>Navigate all key sections</small>
+          </div>
+        </div>
+        {MOBILE_DRAWER_SECTIONS.map((section, index) => (
           <a
             key={section.id}
             href={`#${section.id}`}
             className={active.id === section.id ? 'active' : ''}
-            style={{'--link': section.accent}}>
-            <span className="tab-glow" />
+            style={{'--link': section.accent, '--i': index}}
+            onClick={() => setOpen(false)}>
             <TabIcon name={section.icon} />
-            <span>{section.short}</span>
-            <b className="tab-indicator" />
+            <strong>{section.label}</strong>
           </a>
         ))}
-      </nav>
+        <a className="drawer-whatsapp" href="https://wa.me/917355049718" target="_blank" rel="noreferrer">
+          <ContactIcon name="whatsapp" />
+          WhatsApp Now
+        </a>
+      </aside>
     </>
   );
 }
 
-function Eyebrow({number, children}) {
+function Eyebrow({children}) {
   return (
     <div className="eyebrow">
-      <span>{number}</span>
       <p>{children}</p>
     </div>
   );
@@ -634,7 +792,7 @@ function About() {
   return (
     <section id="about" className="about section-pad">
       <div className="section-heading" data-reveal>
-        <Eyebrow number="01">About profile</Eyebrow>
+        <Eyebrow>About profile</Eyebrow>
         <h2>Clean engineering, polished interfaces and practical product thinking.</h2>
       </div>
       <div className="about-grid">
@@ -654,7 +812,7 @@ function About() {
       <div className="value-grid">
         {VALUE_CARDS.map((item, index) => (
           <article className="value-card" key={item.title} data-reveal style={{'--i': index}}>
-            <span>{item.number}</span>
+            <i className="value-accent" aria-hidden="true" />
             <h3>{item.title}</h3>
             <p>{item.text}</p>
           </article>
@@ -668,7 +826,7 @@ function ProjectCard({project, index}) {
   return (
     <article className={`project-card glass tone-${project.tone}`} data-reveal style={{'--i': index}}>
       <div className="project-visual">
-        <span className="project-index">{String(index + 1).padStart(2, '0')}</span>
+        <img className="project-thumb" src={project.image} alt={`${project.title} preview`} loading="lazy" decoding="async" />
         <div className="mini-window">
           <i />
           <i />
@@ -694,8 +852,8 @@ function Work() {
   return (
     <section id="work" className="work section-pad">
       <div className="section-heading wide" data-reveal>
-        <Eyebrow number="02">Selected work</Eyebrow>
-        <h2>Production-ready projects from resume, plus GMS and SMS added for your portfolio.</h2>
+        <Eyebrow>Featured product portfolio</Eyebrow>
+        <h2>Professional-grade web, mobile, enterprise and blockchain projects built for real business workflows.</h2>
       </div>
       <div className="project-grid">
         {PROJECTS.map((project, index) => (
@@ -710,8 +868,8 @@ function Skills() {
   return (
     <section id="skills" className="skills section-pad">
       <div className="section-heading center" data-reveal>
-        <Eyebrow number="03">Technical skills</Eyebrow>
-        <h2>Modern MERN stack skillset with frontend, mobile, realtime and dashboard strength.</h2>
+        <Eyebrow>Premium capability stack</Eyebrow>
+        <h2>A focused engineering toolkit for polished interfaces, scalable APIs, realtime systems and Web3 products.</h2>
       </div>
       <div className="marquee" aria-hidden="true">
         <div>
@@ -721,8 +879,9 @@ function Skills() {
       <div className="skill-grid">
         {SKILLS.map((skill, index) => (
           <article className="skill-card glass" key={skill.title} data-reveal style={{'--i': index}}>
-            <span>0{index + 1}</span>
+            <i className="skill-accent" aria-hidden="true" />
             <h3>{skill.title}</h3>
+            {skill.description && <p>{skill.description}</p>}
             <ul>
               {skill.items.map(item => <li key={item}>{item}</li>)}
             </ul>
@@ -737,7 +896,7 @@ function Experience() {
   return (
     <section id="experience" className="experience section-pad">
       <div className="section-heading wide" data-reveal>
-        <Eyebrow number="04">Professional journey</Eyebrow>
+        <Eyebrow>Professional journey</Eyebrow>
         <h2>Experience across MERN development, admin dashboards, mobile apps and real-time systems.</h2>
       </div>
       <div className="timeline">
@@ -767,7 +926,7 @@ function Education() {
   return (
     <section id="education" className="education section-pad">
       <div className="section-heading" data-reveal>
-        <Eyebrow number="05">Education & internship</Eyebrow>
+        <Eyebrow>Education & internship</Eyebrow>
         <h2>Computer Science foundation with practical MERN training.</h2>
       </div>
       <div className="credential-grid">
@@ -793,43 +952,15 @@ function Education() {
   );
 }
 
-function ContactForm() {
-  const [sent, setSent] = useState(false);
-
-  if (sent) {
-    return (
-      <div className="success glass">
-        <span>✓</span>
-        <h3>Message ready</h3>
-        <p>Thank you. I will connect with you soon.</p>
-      </div>
-    );
-  }
-
-  return (
-    <form
-      className="contact-form glass"
-      data-reveal
-      onSubmit={event => {
-        event.preventDefault();
-        setSent(true);
-      }}>
-      <input placeholder="Your name" required />
-      <input placeholder="Email address" type="email" required />
-      <textarea placeholder="Tell me about your project or role" rows="5" required />
-      <button type="submit">Send message</button>
-    </form>
-  );
-}
 
 function Contact() {
   return (
     <section id="contact" className="contact section-pad">
       <div className="contact-copy" data-reveal>
-        <Eyebrow number="06">Contact</Eyebrow>
-        <h2>Open to frontend, MERN stack, React Native and dashboard-focused opportunities.</h2>
+        <Eyebrow>Contact & WhatsApp</Eyebrow>
+        <h2>Let’s connect for premium product builds, scalable MERN development and polished frontend experiences.</h2>
         <p>
-          Looking for a role where clean engineering, premium UI and product ownership create lasting impact. Let us build reliable digital products together.
+          Reach out through email, WhatsApp, LinkedIn or GitHub. I’m available for teams and founders looking for clean engineering, refined UI and reliable execution.
         </p>
         <div className="contact-list">
           {CONTACTS.map(item => (
@@ -843,8 +974,14 @@ function Contact() {
             </a>
           ))}
         </div>
+        <div className="contact-cta-strip">
+          <div>
+            <span className="contact-cta-kicker">Open for opportunities</span>
+            <strong>Available for full-time roles, freelance work and product collaborations.</strong>
+          </div>
+          <a href="https://wa.me/917355049718" target="_blank" rel="noreferrer">Chat on WhatsApp</a>
+        </div>
       </div>
-      <ContactForm />
     </section>
   );
 }
